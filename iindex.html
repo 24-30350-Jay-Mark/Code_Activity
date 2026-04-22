@@ -1,9 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jay Mark Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #8d8fb3;
+  line-height: 1.6;
+}
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(164, 191, 235, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: #1f1f1f;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  background: #dbe7ff;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 100px;
+}
+
+.hero-img {
+  background: #F4CCD9;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.hero-img img {
+  width: 300px;
+  border-radius: 30px;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  color: #222;
+}
+
+.hero-text p {
+  font-size: x;
+  color: #333;
+  margin-top: 10px;
+}
+
+.hero {
+  position: relative; /* important */
+}
+
+.hero-logo {
+  position: absolute;
+  right: 80px;
+  top: 25%;
+  transform: translateY(-50%);
+}
+
+.hero-logo img {
+  width: 180px;
+  border-radius: 15px;
+  opacity: 0.9;
+}
+</style>
+
 </head>
 <body>
 
@@ -53,9 +145,7 @@
       nisi ut aliquip
     </p>
 
-    <a href="skills.html">
-  <button>Click to learn more<br>about my skills</button>
-</a>
+    
   </div>
 
   <div class="about-img">
