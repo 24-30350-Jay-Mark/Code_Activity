@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Projects</title>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body class="projects-page">
+
+<a href="index.html" class="back">← Go back</a>
+
+<div class="carousel">
+
+  <div class="arrow" onclick="moveSlide(-1)">◀</div>
+  
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="track">
+
+      <div class="project"><h3>E-Commerce Website</h3><img src="images/projects/projects_ecomm.JPG">
+        <p class="project-text">
+            An online shopping website where users can browse products, 
+            add items to the cart, and proceed to checkout. 
+          </p></div>
+
+      <div class="project"><h3>Portfolio Website</h3><img src="images/projects/project_portfolio.JPG">
+        <p class="project-text">
+            A responsive portfolio website designed to showcase my skills, 
+            projects, and experience as a developer. 
+          </p></div>
+
+      <div class="project"><h3>To-Do App</h3><img src="images/projects/projects_todoapp.JPG">
+        <p class="project-text">
+            A productivity web application that helps users manage 
+            daily tasks efficiently. Users can add, edit, delete tasks
+          </p></div>
+
+      <div class="project"><h3>Movie Search App</h3><img src="images/projects/projects_movie_search_app.JPG">
+        <p class="project-text">
+            A movie search web application that allows users to find 
+            movies and view detailed information such as ratings, release 
+            date, and posters using an external movie API.
+          </p></div>
+      <div class="project"><h3>Blog Website</h3><img src="images/projects/projects_blog_site.JPG">
+        <p class="project-text">
+            A blogging platform where users can read articles and 
+            explore different topics. The website focuses on clean
+            typography and content readability.
+          </p></div>
+      <div class="project"><h3>Tic Tac Toe Game</h3><img src="images/projects/projects_tictactoe_game.JPG">
+        <p class="project-text">
+            A simple interactive browser game where two players can 
+            play Tic Tac Toe. The project demonstrates JavaScript 
+            logic and user interaction.
+          </p></div>
+
+    </div>
+  </div>
+
+  <div class="arrow" onclick="moveSlide(1)">▶</div>
+
+</div>
+
+<div class="dots" id="dots"></div>
+
+<script>
+const track = document.getElementById("track");
+const dotsContainer = document.getElementById("dots");
+
+let slides = Array.from(track.children);
+
+//CLONE FOR CONTINUOUS LOOP
+slides.forEach(slide => {
+  track.appendChild(slide.cloneNode(true));
+});
+
+let index = 0;
+const slideWidth = 280;
+let interval;
+
+// DOTS
+slides.forEach((_, i) => {
+  const dot = document.createElement("span");
+  dot.onclick = () => {
+    index = i;
+    update();
+  };
+  dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.children;
+
+// CENTER 
+function updateActive() {
+  const all = document.querySelectorAll(".project");
+
+  all.forEach(el => el.classList.remove("active"));
+
+  const center = index + 1;
+
+  if (all[center]) {
+    all[center].classList.add("active");
+  }
+}
+
+//SLIDE
+function update() {
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove("active");
+  }
+  dots[index % slides.length].classList.add("active");
+
+  updateActive();
+
+  // rwset
+  if (index >= slides.length) {
+    setTimeout(() => {
+      track.style.transition = "none";
+      index = 0;
+      track.style.transform = "translateX(0px)";
+      updateActive();
+    }, 500);
+  }
+
+  track.style.transition = "transform 0.5s ease-in-out";
+}
+
+// ARROWS
+function moveSlide(dir) {
+  index += dir;
+  update();
+}
+
+// AUTO CONTINUOUS
+function startAuto() {
+  interval = setInterval(() => {
+    index++;
+    update();
+  }, 2000);
+}
+
+// PAUSE ON HOVER
+track.addEventListener("mouseenter", () => clearInterval(interval));
+track.addEventListener("mouseleave", startAuto);
+
+// START
+startAuto();
+update();
+</script>
+
+</body>
+</html>
